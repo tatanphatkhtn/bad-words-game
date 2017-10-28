@@ -1,0 +1,10 @@
+extends layout
+block content
+    .row#game-title
+      h1 Deadly Game!!!
+    .row
+      if(usrList && usrList.length !==0 )
+        include ./partials/player-list.jade
+      else
+        <h1>No player? Something went wrong</h1>
+      script(src = '/javascripts/script.js')

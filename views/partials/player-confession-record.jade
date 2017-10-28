@@ -1,0 +1,23 @@
+.panel.panel-default.has-done-list
+    .panel-heading Has done
+    .panel-body
+        .table-responsive
+              table.table
+                thead
+                  tr
+                    th #
+                    th Đã
+                    th Là
+                    th Ở
+                    th Ngày
+                tbody
+                 -var count = 0;
+                 each confession,index in confessArr 
+                    if(confession.player === usr.username)
+                      -count++
+                      tr(class = '#{count === 1 ? "newest-record" : ""}')
+                        td #{count}
+                        td #{typeArr[confession.type]}
+                        td #{ruleArr[confession.content]}
+                        td #{confession.location}
+                        td #{confession.createdAt}

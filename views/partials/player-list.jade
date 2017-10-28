@@ -1,0 +1,37 @@
+each usr in usrList
+    .col-md-4.player
+        .panel.panel-default.player-information
+            .panel-heading
+                img.player-avatar(src = '#{usr.avatar}')
+                h2.player-name #{usr.name}
+            .panel-body
+                ul.list-group
+                    li.list-group-item(id = '#{usr.username}' + '-score') Điểm đạt được: #{usr.score}
+                    //- li.list-group-item Hạng: 
+                    //- li.list-group-item Favorites: 
+        if(currentUsername === usr.username)
+            .panel.panel-danger.guilty-form
+                .panel-heading Confession form
+                .panel-body
+                    form.form-horizontal
+                        .form-group.gulty-type
+                            label(for='type').col-md-2.control-label Đã:
+                            .col-md-10.k
+                                select(name='type').form-control
+                                     each type,index in typeArr
+                                        option(value= "#{index}") #{type}
+                        .form-group.rules
+                            .col-md-10.col-md-offset-2
+                                select(name='rule').form-control
+                                     each rule,index in ruleArr
+                                        option(value= "#{index}") #{rule}
+                        .form-group.location
+                            label(for='location').col-md-2.control-label  Ở:
+                            .col-md-10
+                                input(type='text' name = 'location').form-control
+                        input(type = 'hidden' value ='#{usr.username}')
+                .panel-footer
+                    button(type="submit").btn.btn-danger.confess-btn
+                        |Confess
+        div(id = '#{usr.username}')
+            include ./player-confession-record.jade

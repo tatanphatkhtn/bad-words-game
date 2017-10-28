@@ -1,0 +1,17 @@
+link(rel='stylesheet', href='/stylesheets/register.css')
+body
+  form(action = '/register', method = 'POST', onSubmit='submit()')
+    h1 Register
+    input(placeholder='Full Name', type= 'text', name = 'name')
+    input(type='text', placeholder='Username', name = 'username')
+    input(type='password', placeholder='Password', name = 'passwd')
+    input(type = 'password', placeholder='Retype password')
+    input(type = 'avatar', placeholder = 'Your avatar image: Paste image link. ex: https://google/image/avatar.jpg', name = 'avatar')
+    button(id = 'sbmBtn') Register
+  script.
+      document.getElementById('sbmBtn').addEventListener("click", function(e) {
+        e.preventDefault();
+        if(document.querySelector('input[name="passwd"]').value !== document.querySelector('input[placeholder="Retype password"]').value || document.querySelector('input[name="passwd"]').value === '')  return alert('Retype password not match');
+        document.querySelector('form').submit();
+      })
+  
